@@ -3,8 +3,8 @@ import React from 'react';
 export default class App extends React.Component {
   render() {
     return (
-     <div style={{textAlign: 'center'}}>
-        <h1>Hello World</h1>
+     <div className="App container">
+        <h1>My app</h1>
       </div>);
   }
 }
