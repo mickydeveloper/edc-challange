@@ -31,8 +31,15 @@ export default class App extends React.Component {
     this.props.dispatch(setCurrentHome(this.findNextHome()))
   }
 
+  getLikedNumber(){
+    return this.props.homes.filter(x => x.asses === 'liked').length
+  }
+
+  getDislikedNumber(){
+    return this.props.homes.filter(x => x.asses === 'disliked').length
+  }
+
   render() {
-    console.log(this.props.currentHome);
     return (
      <div className="App container">
         <img src={this.props.currentHome.url} alt="base home" className="img-fluid"></img>
@@ -40,13 +47,13 @@ export default class App extends React.Component {
           <button type="button" className="btn btn-danger" onClick={() => this.dislikeHome()}>
             <i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
           </button>
-          <div id="disliked">0</div>
+          <div id="disliked">{this.getDislikedNumber()}</div>
         </div>
         <div className="btn-container">
         <button type="button" className="btn btn-success" onClick={() => this.likeHome()}>
           <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
         </button>
-        <div id="liked">0</div>
+        <div id="liked">{this.getLikedNumber()}</div>
         </div>
       </div>);
   }

@@ -33,9 +33,11 @@ export default function reducer(state=initialState, action) {
       }
       break;
     case 'ASSES_HOME':
+      let currentIndex = state.homes.findIndex(x => x.url === state.currentHome.url)
+      state.homes[currentIndex].asses = action.payload
       return {
         ...state,
-        currentHome: {...state.currentHome, asses: action.payload}
+        homes: state.homes
       }
       break;
   }

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function fetchHomes(){
   return function(dispatch) {
-    axios.get("https://api.myjson.com/bins/juc9l")
+    axios.get("https://api.myjson.com/bins/b9wvd")
     .then((response) => {
       dispatch({type: 'FETCH_HOMES_FULFILLED', payload: response.data})
     })
