@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchHomes, setCurrentHome, assesHome } from '../actions/homes';
+import { Link } from 'react-router-dom';
 
 @connect((store) => {
   return{
@@ -10,7 +11,9 @@ import { fetchHomes, setCurrentHome, assesHome } from '../actions/homes';
 })
 export default class App extends React.Component {
   componentWillMount(){
-    this.props.dispatch(fetchHomes())
+    if(this.props.homes.length === 0){
+      this.props.dispatch(fetchHomes())
+    }
   }
 
   findNextHome(){
@@ -53,7 +56,7 @@ export default class App extends React.Component {
         <button type="button" className="btn btn-success" onClick={() => this.likeHome()}>
           <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
         </button>
-        <div id="liked">{this.getLikedNumber()}</div>
+        <div id="liked">{this.getLikedNumber() !== 0 ? <Link to="/liked">{this.getLikedNumber()}</Link> : this.getLikedNumber()}</div>
         </div>
       </div>);
   }
