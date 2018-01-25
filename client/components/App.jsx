@@ -1,43 +1,43 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { likeHome } from '../actions/index';
+import { fetchHomes, setCurrentHome, assesHome } from '../actions/homes';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: ''
-    }
+@connect((store) => {
+  return{
+    homes: store.homes,
+    currentHome: store.currentHome
+  }
+})
+export default class App extends React.Component {
+  componentWillMount(){
+    this.props.dispatch(fetchHomes())
   }
 
-  likeHome() {
-    this.props.likeHome('liked');
+  likeHome(){
+    this.props.dispatch()
+  }
+
+  dislikeHome(){
+
   }
 
   render() {
+    console.log(this.props.currentHome);
     return (
      <div className="App container">
-        <img src="http://cdn.home-designing.com/wp-content/uploads/2016/04/luxury-art-deco-apartment-interior.jpg" alt="base home" className="img-fluid"></img>
+        <img src={this.props.currentHome.url} alt="base home" className="img-fluid"></img>
         <div className="btn-container">
-          <button type="button" className="btn btn-danger" onClick={() => this.likeHome() }>
+          <button type="button" className="btn btn-danger">
             <i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
           </button>
           <div id="disliked">0</div>
         </div>
         <div className="btn-container">
-        <button type="button" className="btn btn-success" onClick={() => this.likeHome() }>
+        <button type="button" className="btn btn-success">
           <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
         </button>
-        <div id="liked">{this.props.likedHomes.length}</div>
+        <div id="liked">0</div>
         </div>
       </div>);
   }
 }
-
-function mapStateToProps(state){
-  return {
-    likedHomes: state
-  }
-}
-
-export default connect(mapStateToProps, {likeHome})(App);
