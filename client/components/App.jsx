@@ -45,12 +45,12 @@ export default class App extends React.Component {
   render() {
     return (
      <div className="App container">
-        <img src={this.props.currentHome.url} alt="base home" className="img-fluid"></img>
+        { this.props.currentHome.url ? <img src={this.props.currentHome.url} alt="base home" className="img-fluid"/>  : <div>Loading</div> }
         <div className="btn-container">
           <button type="button" className="btn btn-danger" onClick={() => this.dislikeHome()}>
             <i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
           </button>
-          <div id="disliked">{this.getDislikedNumber()}</div>
+          <div id="disliked">{this.getDislikedNumber() !== 0 ? <Link to="/disliked">{this.getDislikedNumber()}</Link> : this.getDislikedNumber()}</div>
         </div>
         <div className="btn-container">
         <button type="button" className="btn btn-success" onClick={() => this.likeHome()}>

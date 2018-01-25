@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 import Liked from './components/Liked.jsx';
+import Disliked from './components/Disliked.jsx';
 import { Provider } from 'react-redux';
 import store from './store';
 import './index.scss';
@@ -14,6 +15,8 @@ ReactDOM.render(
       <Route path="/" exact component={App}>
       </Route>
       <Route path="/liked" exact component={Liked}>
+      </Route>
+      <Route path="/disliked" exact component={Disliked}>
       </Route>
     </Switch>
     </HashRouter>
