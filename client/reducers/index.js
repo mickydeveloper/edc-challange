@@ -32,6 +32,12 @@ export default function reducer(state=initialState, action) {
         currentHome: action.payload
       }
       break;
+    case 'ASSES_HOME':
+      return {
+        ...state,
+        currentHome: {...state.currentHome, asses: action.payload}
+      }
+      break;
   }
   return state;
 }
