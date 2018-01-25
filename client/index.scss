@@ -1,3 +1,30 @@
 .App {
   padding-top: 2rem;
+
+  .banner {
+    height: 40vh;
+    width : 100%;
+  }
+
+  .btn-container {
+    text-align: center;
+    width     : 50%;
+    display   : inline-block;
+    font-size : 1.3rem;
+    @media (min-width: 600px) {
+      width       : auto;
+      margin-right: 1rem;
+    }
+
+    .btn {
+      font-size    : 1.2rem;
+      padding      : 0.6rem 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+  }
+}
+
+.list-image {
+  height: 30vh;
+  width : 100%;
 }
